@@ -94,3 +94,8 @@ void Grid::SetEmptyCell(int i, int j)
 	emptyCell.setPosition(j * cellSize, i * cellSize);
 	oldGrid[i][j] = emptyCell;
 }
+
+int Grid::GetCellSize()
+{
+	return cellSize;
+}

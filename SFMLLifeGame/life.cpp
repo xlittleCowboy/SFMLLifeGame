@@ -21,6 +21,11 @@ void Life::SpawnStartCells(Grid& grid)
 	}
 }
 
+void Life::SpawnCells(Grid& grid, int x, int y)
+{
+	grid.SetCell(y, x);
+}
+
 void Life::CheckCells(Grid& grid)
 {
 	for (int i = 0; i < grid.GetRows(); i++)

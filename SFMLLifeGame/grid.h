@@ -31,5 +31,7 @@ public:
 
 	int GetRows();
 	int GetColumns();
+
+	int GetCellSize();
 };
 

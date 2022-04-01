@@ -14,6 +14,7 @@ public:
 	Life(float startSpawnChance);
 
 	void SpawnStartCells(Grid& grid);
+	void SpawnCells(Grid& grid, int x, int y);
 
 	void CheckCells(Grid& grid);
 	int CountNeighbourCells(Grid& grid, int i, int j);
