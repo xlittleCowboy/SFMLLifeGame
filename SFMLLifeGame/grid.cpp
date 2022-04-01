@@ -30,10 +30,12 @@ Grid::Grid(int cellSize, sf::Color cellColor, int windowWidth, int windowHeight)
 	columns = windowWidth / cellSize;
 
 	grid = new sf::RectangleShape * [rows];
+	oldGrid = new sf::RectangleShape * [rows];
 
 	for (int i = 0; i < rows; i++)
 	{
 		grid[i] = new sf::RectangleShape[columns];
+		oldGrid[i] = new sf::RectangleShape[columns];
 	}
 
 	ClearGrid();
@@ -47,6 +49,7 @@ void Grid::ClearGrid()
 		{
 			emptyCell.setPosition(j * cellSize, i * cellSize);
 			grid[i][j] = emptyCell;
+			oldGrid[i][j] = emptyCell;
 		}
 	}
 }
@@ -59,6 +62,7 @@ void Grid::DrawGrid(sf::RenderWindow& window)
 		{
 			// Glitch Effect!
 			// grid[i][j].setFillColor(sf::Color(rand() % 255, rand() % 255, rand() % 255)); 
+			grid[i][j] = oldGrid[i][j];
 			window.draw(grid[i][j]);
 		}
 	}
@@ -82,11 +86,11 @@ bool Grid::IsCellAlive(int i, int j)
 void Grid::SetCell(int i, int j)
 {
 	cell.setPosition(j * cellSize, i * cellSize);
-	grid[i][j] = cell;
+	oldGrid[i][j] = cell;
 }
 
 void Grid::SetEmptyCell(int i, int j)
 {
 	emptyCell.setPosition(j * cellSize, i * cellSize);
-	grid[i][j] = emptyCell;
+	oldGrid[i][j] = emptyCell;
 }

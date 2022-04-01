@@ -11,7 +11,7 @@ int main()
     
     Grid grid(10, sf::Color::White, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-    Life life(3);
+    Life life(50);
     life.SpawnStartCells(grid);
 
     while (window.isOpen())

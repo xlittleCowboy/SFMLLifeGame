@@ -16,6 +16,7 @@ private:
 	int rows, columns;
 
 	sf::RectangleShape** grid;
+	sf::RectangleShape** oldGrid;
 
 public:
 	~Grid();
