@@ -8,17 +8,14 @@ int main()
 {
     const int WINDOW_WIDTH = sf::VideoMode::getDesktopMode().width, WINDOW_HEIGHT = sf::VideoMode::getDesktopMode().height;
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Life Game!", sf::Style::Fullscreen);
-    //window.setFramerateLimit(60);
-    //window.setVerticalSyncEnabled(true);
+    window.setVerticalSyncEnabled(true);
     
     Grid grid(10, sf::Color::White, WINDOW_WIDTH, WINDOW_HEIGHT);
 
     Life life(15);
     life.SpawnStartCells(grid);
 
-    bool isMousePressedAndMoved = false;
-
-    float delay = 0.1f;
+    float delay = 0.15f;
     sf::Clock clock;
 
     while (window.isOpen())
@@ -31,14 +28,9 @@ int main()
             if (event.type == sf::Event::KeyPressed)
                 if (event.key.code == sf::Keyboard::Escape)
                     window.close();
-
-            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left))
-                isMousePressedAndMoved = true;
-            else
-                isMousePressedAndMoved = false;
         }
 
-        if (isMousePressedAndMoved)
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             sf::Vector2i position(event.mouseMove.x, event.mouseMove.y);
             position.x /= grid.GetCellSize();

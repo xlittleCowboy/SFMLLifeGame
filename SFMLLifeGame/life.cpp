@@ -40,7 +40,7 @@ void Life::CheckCells(Grid& grid)
 					grid.SetCell(i, j);
 				}
 			}
-			else
+			else if (grid.IsCellAlive(i, j))
 			{
 				if (neighbourCellsCount < 2 || neighbourCellsCount > 3)
 				{
@@ -68,7 +68,7 @@ int Life::CountNeighbourCells(Grid& grid, int i, int j)
 		j == 0 ? x = j : x = j - 1;
 		for (; x <= x2; x++)
 		{
-			if (grid.IsCellAlive(y, x))
+			if ((y != i || x != j) && grid.IsCellAlive(y, x))
 			{
 				cellsCount++;
 			}
